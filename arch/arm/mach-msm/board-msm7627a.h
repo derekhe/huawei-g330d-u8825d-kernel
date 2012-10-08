@@ -101,7 +101,7 @@ struct bt_vreg_info {
 void __init msm7627a_bt_power_init(void);
 #endif
 #if (defined(HUAWEI_BT_BTLA_VER30) && defined(CONFIG_HUAWEI_KERNEL))
-
+#if 0  //delete for compile error
 struct bt_vreg_info {
 	const char *name;
 	unsigned int pmapp_id;
@@ -110,6 +110,7 @@ struct bt_vreg_info {
 	unsigned int is_pin_controlled;
 	struct regulator *reg;
 };
+#endif
 
 void __init msm7627a_bt_power_init(void);
 
