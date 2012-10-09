@@ -1,0 +1,17 @@
+* Make sure you know how to build a kernel, read this first
+  http://source.android.com/source/building-kernels.html
+
+* Step 1:  Setup toolchain
+  export PATH=$(pwd)/prebuilt/linux-x86/toolchain/arm-eabi-4.4.3/bin:$PATH
+
+* Step 2:  Setup compiler toolchain
+  export ARCH=arm
+  export SUBARCH=arm
+  export CROSS_COMPILE=arm-eabi-
+
+* Step 3:  Export build macro
+  export ENABLE_BTLA_VER30=true
+
+* Step 4:  
+  make hw_g330d_defconfig
+  make -j4
