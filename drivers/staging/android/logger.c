@@ -644,21 +644,6 @@ EXPORT_SYMBOL(save_address_to_crash_dump);
 static int __init logger_init(void)
 {
 	int ret;
-	/* for logcat control by nv */
-#ifdef CONFIG_HUAWEI_KERNEL
-    u16 nv_item = LOG_CTL_INFO_ITEM;
-    struct log_ctl ctl_info;
-    int  rval = -1;
-
-    ctl_info.on_off_flag = -1;
-    rval = oem_rapi_read_nv(nv_item, (void*)&ctl_info, sizeof(ctl_info));
-    printk("logger open flag: on_off_flag=%d\n", ctl_info.on_off_flag);
- 
-    /*if log nv(NV_LOG_CTL_INFO_I) is 0 or inactive , we don't init the logger driver*/
-    if((rval != 0) || (ctl_info.on_off_flag != USER_LOG_ON))
-        return 0;	
-#endif
-	
 	ret = init_log(&log_main);
 	if (unlikely(ret))
 		goto out;
